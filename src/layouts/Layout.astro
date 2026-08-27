@@ -5,6 +5,7 @@ import '../styles/premium.css';
 import '../styles/motion.css';
 import '../styles/refine.css';
 import '../styles/future-2026.css';
+import '../styles/future-2026-fixes.css';
 
 const {
   title = 'Apon UK: Global Platform with App and AI',
@@ -156,7 +157,7 @@ const organisation = {
       });
 
       if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-        const motionTargets=document.querySelectorAll('#main-content .section-head,#main-content .card,#main-content .feature-panel,#main-content .stat,#main-content .training-item,#main-content .content-card,#main-content .info-panel,#main-content .archive-card,#main-content .form-card,#main-content .app-panel,#main-content .cta,#main-content .split>div,#main-content .image-panel');
+        const motionTargets=document.querySelectorAll('#main-content .section-head,#main-content .card,#main-content .feature-panel,#main-content .stat,#main-content .training-item,#main-content .content-card,#main-content .info-panel,#main-content .archive-card,#main-content .form-card,#main-content .app-panel,#main-content .cta,#main-content .split>div,#main-content .image-panel,#main-content .service-card-v2,#main-content .outcome-card,#main-content .stat-v2,#main-content .training-panel-v2,#main-content .ebook-photo-panel,#main-content .seminar-card-photo,#main-content .career-board');
         const globalObserver=new IntersectionObserver((entries)=>{
           entries.forEach((entry)=>{
             if(entry.isIntersecting){entry.target.classList.add('global-visible');globalObserver.unobserve(entry.target);}
@@ -169,7 +170,8 @@ const organisation = {
           let direction=index%2===0?'motion-left':'motion-right';
           if(el.classList.contains('section-head')) direction='motion-left';
           if(el.classList.contains('cta')) direction='motion-up';
-          if(el.classList.contains('image-panel')||el.classList.contains('feature-panel')) direction='motion-right';
+          if(el.classList.contains('image-panel')||el.classList.contains('feature-panel')||el.classList.contains('career-board')||el.classList.contains('seminar-card-photo')||el.classList.contains('training-panel-v2')) direction='motion-right';
+          if(el.classList.contains('ebook-photo-panel')) direction='motion-left';
           const split=el.closest('.split');
           if(split){const children=[...split.children];direction=children.indexOf(el)===0?'motion-left':'motion-right';}
           el.classList.add(direction);
