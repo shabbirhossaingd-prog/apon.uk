@@ -3,6 +3,7 @@ import '../styles/global.css';
 import '../styles/menu.css';
 import '../styles/premium.css';
 import '../styles/motion.css';
+import '../styles/refine.css';
 
 const {
   title = 'Apon UK: Global Platform with App and AI',
@@ -75,6 +76,7 @@ const organisation = {
           <div class="mobile-cta"><a class="btn btn-light" href="/guidance/">Join Seminar</a><a class="btn btn-primary" href="https://portal.apon.uk/">Apon Portal</a></div>
         </div>
       </div>
+      <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
     </header>
     <main id="main-content"><slot /></main>
     <footer class="site-footer">
@@ -93,31 +95,82 @@ const organisation = {
       b?.addEventListener('click',()=>{const isHidden=m.hidden;m.hidden=!isHidden;b.textContent=isHidden?'✕':'☰';b.setAttribute('aria-expanded',String(isHidden));});
       document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&m&&!m.hidden){m.hidden=true;b.textContent='☰';b.setAttribute('aria-expanded','false');}});
 
+      const path=location.pathname.replace(/\/$/,'')||'/';
+      document.querySelectorAll('.nav-links a[href^="/"]').forEach((link)=>{
+        const href=(link.getAttribute('href')||'').replace(/\/$/,'')||'/';
+        if(href===path) link.classList.add('is-active');
+      });
+
+      const progress=document.querySelector('[data-scroll-progress]');
+      const updateProgress=()=>{
+        const max=document.documentElement.scrollHeight-innerHeight;
+        const ratio=max>0?Math.min(scrollY/max,1):0;
+        if(progress) progress.style.transform=`scaleX(${ratio})`;
+      };
+      addEventListener('scroll',updateProgress,{passive:true});
+      updateProgress();
+
+      document.querySelectorAll('#main-content .section.white .prose').forEach((prose)=>{
+        const headings=[...prose.querySelectorAll(':scope > section > h2')];
+        prose.querySelectorAll(':scope > section').forEach((section,index)=>{
+          if(!section.querySelector(':scope > .section-index')){
+            const label=document.createElement('span');
+            label.className='section-index';
+            label.textContent=String(index+1).padStart(2,'0');
+            section.prepend(label);
+          }
+        });
+        if(headings.length<2 || prose.closest('.inner-content-shell')) return;
+
+        const shell=document.createElement('div');
+        shell.className='container inner-content-shell';
+        const toc=document.createElement('aside');
+        toc.className='page-toc';
+        toc.setAttribute('aria-label','On this page');
+        const label=document.createElement('span');
+        label.className='page-toc-label';
+        label.textContent='On this page';
+        toc.append(label);
+
+        headings.forEach((heading,index)=>{
+          if(!heading.id) heading.id=`section-${index+1}`;
+          const link=document.createElement('a');
+          link.href=`#${heading.id}`;
+          link.dataset.index=String(index+1).padStart(2,'0');
+          link.textContent=heading.textContent||`Section ${index+1}`;
+          toc.append(link);
+        });
+
+        prose.parentNode.insertBefore(shell,prose);
+        shell.append(toc,prose);
+
+        const tocLinks=[...toc.querySelectorAll('a')];
+        const sectionObserver=new IntersectionObserver((entries)=>{
+          entries.forEach((entry)=>{
+            if(!entry.isIntersecting) return;
+            tocLinks.forEach((link)=>link.classList.toggle('is-current',link.getAttribute('href')===`#${entry.target.id}`));
+          });
+        },{rootMargin:'-28% 0px -60% 0px',threshold:0});
+        headings.forEach((heading)=>sectionObserver.observe(heading));
+      });
+
       if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
         const motionTargets=document.querySelectorAll('#main-content .section-head,#main-content .card,#main-content .feature-panel,#main-content .stat,#main-content .training-item,#main-content .content-card,#main-content .info-panel,#main-content .archive-card,#main-content .form-card,#main-content .app-panel,#main-content .cta,#main-content .split>div,#main-content .image-panel');
         const globalObserver=new IntersectionObserver((entries)=>{
           entries.forEach((entry)=>{
-            if(entry.isIntersecting){
-              entry.target.classList.add('global-visible');
-              globalObserver.unobserve(entry.target);
-            }
+            if(entry.isIntersecting){entry.target.classList.add('global-visible');globalObserver.unobserve(entry.target);}
           });
         },{threshold:.14,rootMargin:'0px 0px -55px'});
 
         motionTargets.forEach((el,index)=>{
           if(el.classList.contains('reveal-item')) return;
           el.classList.add('global-reveal');
-
           let direction=index%2===0?'motion-left':'motion-right';
           if(el.classList.contains('section-head')) direction='motion-left';
           if(el.classList.contains('cta')) direction='motion-up';
           if(el.classList.contains('image-panel')||el.classList.contains('feature-panel')) direction='motion-right';
           const split=el.closest('.split');
-          if(split){
-            const children=[...split.children];
-            direction=children.indexOf(el)===0?'motion-left':'motion-right';
-          }
-
+          if(split){const children=[...split.children];direction=children.indexOf(el)===0?'motion-left':'motion-right';}
           el.classList.add(direction);
           el.style.setProperty('--motion-delay',`${Math.min(index%4,3)*65}ms`);
           globalObserver.observe(el);
