@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,9 +23,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Install dependencies
         run: npm install
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
       - name: Build
         run: npm run build
       - name: Check generated site
@@ -30,6 +36,12 @@ jobs:
           test -f dist/404.html
           test -f dist/robots.txt
           test -f dist/sitemap-index.xml
+          test -f dist/contact/index.html
+          test -f dist/studyabroad/index.html
+          test -f dist/startup/index.html
+          test -f dist/researchdegree/index.html
+          test -f dist/jobabroad/index.html
+          test -f dist/opportunities/index.html
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
