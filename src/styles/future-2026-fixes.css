@@ -10,8 +10,61 @@
 .page-toc a.is-current:before{color:var(--f26-orange)!important}
 .section-index{margin-bottom:20px!important;font-size:.62rem!important;letter-spacing:.15em!important}
 
+/* Header: transparent white logo on the dark glass navigation */
+.site-header .brand-logo{display:block!important;width:142px!important;height:46px!important;padding:0!important;border-radius:0!important;background:transparent url('/apon-logo-white.svg') left center/contain no-repeat!important;box-shadow:none!important;flex:0 0 142px}
+.site-header .brand-logo img{opacity:0!important;width:142px!important;height:46px!important;display:block!important}
+.site-header .nav{min-height:64px!important;padding:8px 12px!important;border-radius:19px!important}
+.nav-links{gap:20px!important}
+.nav-group>a{font-size:.84rem!important;padding:17px 0!important}
+.nav-actions .btn{min-height:39px!important;padding:0 14px!important;font-size:.81rem!important}
+
+/* Subpage hero: correct dark-background contrast and sane scale */
+.content-hero.subpage-hero{padding:112px 0 68px!important;background:radial-gradient(circle at 79% 17%,rgba(44,113,214,.22),transparent 30%),linear-gradient(135deg,#03152f 0%,#06244f 100%)!important}
+.subpage-hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;min-height:480px!important;gap:64px!important}
+.content-hero.subpage-hero h1{color:#fff!important;font-size:clamp(3.2rem,5.25vw,5.65rem)!important;line-height:.9!important;letter-spacing:-.06em!important;max-width:650px!important;margin:22px 0 18px!important}
+.content-hero.subpage-hero p{color:rgba(255,255,255,.76)!important;font-size:1rem!important;line-height:1.66!important;max-width:560px!important}
+.content-hero.subpage-hero .eyebrow{background:rgba(255,255,255,.09)!important;color:#fff!important;border:1px solid rgba(255,255,255,.11)!important}
+.content-hero.subpage-hero .eyebrow-dot{background:var(--f26-orange)!important}
+.subpage-hero-media{height:455px!important;border-radius:34px 34px 10px 34px!important;box-shadow:0 28px 70px rgba(0,0,0,.18)!important}
+.subpage-hero-media:after{background:rgba(3,21,47,.78)!important;color:#fff!important;border:1px solid rgba(255,255,255,.14)!important}
+.media-ring-one{border-color:rgba(255,255,255,.22)!important}
+.media-ring-two{border-color:var(--f26-orange)!important}
+.media-brand{font-size:5.3rem!important;color:rgba(255,255,255,.11)!important}
+
+/* Homepage heading scale: contemporary but readable, not poster-sized */
+.hero-v2 h1{font-size:clamp(3.65rem,6.4vw,6.7rem)!important;line-height:.89!important;max-width:650px!important}
+.editorial-head h2,.section-head h2{font-size:clamp(2.65rem,4.5vw,4.85rem)!important;line-height:.95!important;max-width:800px!important}
+.about-band-copy h2{font-size:clamp(2.85rem,4.7vw,5.15rem)!important;line-height:.94!important;max-width:700px!important}
+.training-panel-v2 h2,.ebook-content h2{font-size:clamp(2.55rem,4vw,4.45rem)!important;line-height:.95!important}
+.section{padding:92px 0!important}
+
+/* Outcome cards: reduce giant typography and vertical bulk */
+.outcomes-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;align-items:stretch!important}
+.outcome-card{min-height:330px!important;padding:28px!important;border-radius:24px!important}
+.outcome-icon{margin-bottom:24px!important;font-size:1.45rem!important}
+.outcome-card h3{font-size:clamp(1.8rem,2.55vw,3rem)!important;line-height:.98!important;margin-bottom:14px!important}
+.outcome-card p{font-size:.92rem!important;line-height:1.58!important}
+.outcome-card a{font-size:.88rem!important}
+
+/* Newsletter: compact horizontal CTA instead of oversized billboard */
+.subscribe-section{padding-top:20px!important;padding-bottom:86px!important}
+.subscribe-card-v2{display:grid!important;grid-template-columns:1.05fr .95fr!important;align-items:center!important;gap:34px!important;padding:38px 42px!important;border-radius:30px!important;min-height:0!important}
+.subscribe-card-v2 h2{font-size:clamp(2.25rem,3.8vw,3.95rem)!important;line-height:.96!important;max-width:520px!important;margin:8px 0 0!important}
+.subscribe-form{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;min-width:0!important}
+.subscribe-form input{width:min(100%,300px)!important;min-height:48px!important;font-size:.94rem!important;padding:0 18px!important}
+.subscribe-form .btn{min-height:48px!important;padding:0 19px!important}
+
 /* Make modern homepage modules participate in the same entrance system */
 .service-card-v2,.outcome-card,.stat-v2,.training-panel-v2,.ebook-photo-panel,.seminar-card-photo,.career-board{will-change:transform,opacity}
+
+/* Reassert directional motion after later 2026 overrides */
+.global-reveal,.reveal-item{opacity:0!important;filter:blur(2px)!important;transition:opacity .72s cubic-bezier(.18,.82,.25,1) var(--motion-delay,0ms),transform .72s cubic-bezier(.18,.82,.25,1) var(--motion-delay,0ms),filter .58s ease var(--motion-delay,0ms)!important;will-change:transform,opacity!important}
+.global-reveal.motion-left,.reveal-item.reveal-left{transform:translate3d(-58px,0,0)!important}
+.global-reveal.motion-right,.reveal-item.reveal-right{transform:translate3d(58px,0,0)!important}
+.global-reveal.motion-up,.reveal-item.reveal-up{transform:translate3d(0,34px,0)!important}
+.global-reveal.global-visible,.reveal-item.is-visible{opacity:1!important;filter:none!important;transform:translate3d(0,0,0)!important}
+.subpage-hero-media{animation:aponHeroMediaTranslate .82s cubic-bezier(.18,.82,.25,1) .08s both!important}
+@keyframes aponHeroMediaTranslate{from{opacity:0;translate:52px 0}to{opacity:1;translate:0 0}}
 
 /* Modern archive / form treatments */
 .archive-card,.content-card,.info-panel,.form-card{background:#edf0f4!important}
@@ -24,9 +77,33 @@
   .page-toc{top:88px!important;display:flex!important;gap:6px!important;overflow-x:auto!important;white-space:nowrap!important;padding:9px!important;z-index:12!important}
   .page-toc-label{display:none!important}
   .page-toc a{flex:0 0 auto!important}
+  .subpage-hero-grid{grid-template-columns:1fr!important;gap:32px!important;min-height:auto!important}
+  .subpage-hero-media{height:390px!important}
+  .outcomes-grid{grid-template-columns:1fr 1fr!important}
+  .outcome-card:first-child{grid-column:1/-1}
 }
 @media(max-width:720px){
   .mobile-menu{margin:7px;border-radius:18px;background:rgba(3,21,47,.97)!important;box-shadow:0 24px 60px rgba(3,21,47,.25)}
   .page-toc{top:76px!important}
   .form-card{padding:24px!important}
+  .site-header .brand-logo{width:122px!important;height:40px!important;flex-basis:122px!important}
+  .site-header .brand-logo img{width:122px!important;height:40px!important}
+  .content-hero.subpage-hero{padding:92px 0 52px!important}
+  .content-hero.subpage-hero h1{font-size:clamp(2.6rem,11vw,4rem)!important;max-width:100%!important}
+  .subpage-hero-media{height:290px!important;border-radius:24px 24px 8px 24px!important}
+  .hero-v2 h1{font-size:clamp(3rem,12vw,4.7rem)!important}
+  .editorial-head h2,.section-head h2,.about-band-copy h2{font-size:clamp(2.25rem,9vw,3.5rem)!important}
+  .outcomes-grid{grid-template-columns:1fr!important}
+  .outcome-card:first-child{grid-column:auto}
+  .outcome-card{min-height:0!important}
+  .subscribe-card-v2{grid-template-columns:1fr!important;padding:28px!important;gap:22px!important}
+  .subscribe-card-v2 h2{font-size:clamp(2rem,9vw,3rem)!important}
+  .subscribe-form{justify-content:flex-start!important;flex-wrap:wrap!important}
+  .subscribe-form input{width:100%!important;max-width:none!important}
+  .global-reveal.motion-left,.reveal-item.reveal-left{transform:translate3d(-30px,0,0)!important}
+  .global-reveal.motion-right,.reveal-item.reveal-right{transform:translate3d(30px,0,0)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .global-reveal,.reveal-item{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}
+  .subpage-hero-media{animation:none!important;translate:none!important}
 }
