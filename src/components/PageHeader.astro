@@ -53,7 +53,9 @@ else if (key.includes('app') || key.includes('sector') || key.includes('governme
     const targets = root.querySelectorAll('.prose > section, .prose > p, .prose > ul, .prose > ol, .content-card, .info-panel, .archive-card, .form-card, .app-panel');
     targets.forEach((el, index) => {
       el.classList.add('reveal-item');
-      el.style.setProperty('--reveal-delay', `${Math.min(index * 55, 275)}ms`);
+      const direction = index % 2 === 0 ? 'reveal-left' : 'reveal-right';
+      el.classList.add(direction);
+      el.style.setProperty('--motion-delay', `${Math.min(index % 4, 3) * 70}ms`);
     });
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -62,7 +64,7 @@ else if (key.includes('app') || key.includes('sector') || key.includes('governme
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+    }, { threshold: 0.14, rootMargin: '0px 0px -55px' });
     targets.forEach((el) => observer.observe(el));
   })();
 </script>
