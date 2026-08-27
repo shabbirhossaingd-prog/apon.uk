@@ -1,0 +1,18 @@
+---
+const { name = 'spark', size = 24, class: className = '' } = Astro.props;
+const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true' };
+---
+<span class={`ui-icon ${className}`}>
+  {name === 'calendar' && <svg {...common}><rect x="3" y="5" width="18" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M7 3v4M17 3v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 14h3M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>}
+  {name === 'globe' && <svg {...common}><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3C9.6 5.5 8.4 8.5 8.4 12S9.6 18.5 12 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>}
+  {name === 'location' && <svg {...common}><path d="M12 21s6-5.3 6-11a6 6 0 1 0-12 0c0 5.7 6 11 6 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="1.8"/></svg>}
+  {name === 'seminar' && <svg {...common}><rect x="3" y="4" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M7 20h10M12 16v4M7 9l3 2 3-4 4 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+  {name === 'study' && <svg {...common}><path d="m3 9 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11.5V16c3 2.3 9 2.3 12 0v-4.5M21 9v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>}
+  {name === 'guide' && <svg {...common}><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z" stroke="currentColor" stroke-width="1.8"/><path d="M17 7h2a2 2 0 0 1 2 2v11h-4M8 9h6M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>}
+  {name === 'target' && <svg {...common}><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="m14.5 9.5 5-5M17 4.5h2.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+  {name === 'training' && <svg {...common}><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M8 15V9l4 3 4-3v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+  {name === 'success' && <svg {...common}><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m8 12 2.5 2.5L16.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+  {name === 'play' && <svg {...common}><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m10 8 6 4-6 4V8Z" fill="currentColor"/></svg>}
+  {name === 'chat' && <svg {...common}><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>}
+  {name === 'spark' && <svg {...common}><path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m18 14 .8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8L18 14Z" stroke="currentColor" stroke-width="1.5"/></svg>}
+</span>
