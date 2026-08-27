@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+const items=['Global Immigration support','Neuro Diversity','Poverty Elevation','Employment, training and business development support'];
+---
+<Layout title="Help in Need | Apon UK" description="Global Immigration support, Neuro Diversity, Poverty Elevation, Employment, training and business development support.">
+  <PageHeader title="Help in Need" subtitle="" actions={[{label:'Contact us',href:'/contact/',primary:true},{label:'Join Apon Portal with your CV',href:'https://portal.apon.uk/'}]} />
+  <section class="section white">
+    <div class="container content-grid">
+      {items.map((item,index)=><article class="content-card"><span class="card-number">{index+1}</span><h3>{item}</h3></article>)}
+    </div>
+    <div class="container" style="margin-top:28px"><a class="btn btn-secondary" href="/free-training/">Start our training free</a></div>
+  </section>
+</Layout>
