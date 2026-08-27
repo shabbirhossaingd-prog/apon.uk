@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<Layout title="Newsletter | Apon UK" description="Subscribe to the Apon's newsletter for free seminar/training notifications.">
+  <PageHeader title="Newsletter" subtitle="Subscribe to the Apon's newsletter for free seminar/training notifications." />
+  <section class="section white">
+    <div class="container" style="max-width:760px">
+      <form class="form-card" id="newsletter-form" action="mailto:info@apon.uk" method="post" enctype="text/plain">
+        <div class="field"><label for="newsletter-email">Email</label><input id="newsletter-email" name="Email" type="email" required autocomplete="email" placeholder="Email" /></div>
+        <div class="hero-actions"><button class="btn btn-primary" type="submit">Subscribe</button></div>
+        <p class="form-status" id="newsletter-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+  <script is:inline>
+    const f=document.querySelector('#newsletter-form');const s=document.querySelector('#newsletter-status');f?.addEventListener('submit',(e)=>{e.preventDefault();const d=new FormData(f);s.textContent='Opening your email app…';window.location.href=`mailto:info@apon.uk?subject=${encodeURIComponent('Apon UK newsletter subscription')}&body=${encodeURIComponent(`Email: ${d.get('Email')||''}`)}`;});
+  </script>
+</Layout>
