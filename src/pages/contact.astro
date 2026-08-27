@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<Layout title="Contact | Apon UK" description="Contact Apon UK for global career, study, freelancing, startup, research and job support.">
+  <PageHeader title="Contact" subtitle="" actions={[{label:'Apon Portal',href:'https://portal.apon.uk/',primary:true}]} />
+  <section class="section white">
+    <div class="container info-grid">
+      <div class="info-panel">
+        <span class="eyebrow"><span class="eyebrow-dot"></span>Contact information</span>
+        <h2 style="margin-top:18px">Apon UK</h2>
+        <p>10, PINELEA ALTRINCHAM WA15 8WG United Kingdom</p>
+        <p><a class="text-link" href="tel:+447459157276">+44 7459 157276</a><br/><a class="text-link" href="tel:+8801830146741">+880 1830-146741</a><br/><a class="text-link" href="tel:+8801799981215">+880 1799-981215</a></p>
+        <p><a class="text-link" href="mailto:info@apon.uk">info@apon.uk</a></p>
+      </div>
+      <form class="form-card" id="contact-form" action="mailto:info@apon.uk" method="post" enctype="text/plain">
+        <div class="form-grid">
+          <div class="field"><label for="first-name">First Name*</label><input id="first-name" name="First Name" required autocomplete="given-name" /></div>
+          <div class="field"><label for="email">Email Address*</label><input id="email" name="Email Address" type="email" required autocomplete="email" /></div>
+          <div class="field full"><label for="phone">Phone Number</label><input id="phone" name="Phone Number" type="tel" autocomplete="tel" /></div>
+          <div class="field full"><label for="message">Message <span id="message-count">0</span>/180</label><textarea id="message" name="Message" maxlength="180"></textarea></div>
+          <div class="field full"><button class="btn btn-primary" type="submit">Send Message</button><span class="form-status" id="form-status" aria-live="polite"></span></div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script is:inline>
+    const form=document.querySelector('#contact-form');const msg=document.querySelector('#message');const count=document.querySelector('#message-count');const status=document.querySelector('#form-status');
+    msg?.addEventListener('input',()=>{count.textContent=String(msg.value.length)});
+    form?.addEventListener('submit',(e)=>{e.preventDefault();const data=new FormData(form);const body=[`First Name: ${data.get('First Name')||''}`,`Email Address: ${data.get('Email Address')||''}`,`Phone Number: ${data.get('Phone Number')||''}`,'',String(data.get('Message')||'')].join('\n');status.textContent='Opening your email app…';window.location.href=`mailto:info@apon.uk?subject=${encodeURIComponent('Apon UK website enquiry')}&body=${encodeURIComponent(body)}`;});
+  </script>
+</Layout>
