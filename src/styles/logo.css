@@ -1,0 +1,4 @@
+.site-header .brand-logo,.site-footer .brand-logo{display:inline-flex;align-items:center;justify-content:center;background:#fff;padding:7px 10px;border-radius:14px;box-shadow:0 8px 24px rgba(2,17,39,.12)}
+.site-header .brand-logo img,.site-footer .brand-logo img{display:block;width:154px;height:auto;border-radius:0}
+.site-footer .brand-logo img{width:168px}
+@media(max-width:640px){.site-header .brand-logo{padding:6px 8px;border-radius:12px}.site-header .brand-logo img{width:132px}}
