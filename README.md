@@ -8,6 +8,7 @@ A lightweight Astro redesign of the current Apon UK public website. The project 
 - HTML/CSS/vanilla JavaScript
 - `@astrojs/sitemap`
 - No client framework required
+- Node.js 22.12+ recommended
 
 ## Run locally
 
@@ -25,8 +26,20 @@ npm run preview
 
 ## Content editing
 
+Each important public page has its own file so content is easy to find and update:
+
 - Homepage: `src/pages/index.astro`
-- Main existing content pages: `src/pages/[slug].astro`
+- Study Abroad: `src/pages/studyabroad.astro`
+- Freelancing: `src/pages/freelancing.astro`
+- Startup: `src/pages/startup.astro`
+- Research Degree: `src/pages/researchdegree.astro`
+- Job Abroad: `src/pages/jobabroad.astro`
+- Guidance: `src/pages/guidance.astro`
+- Scholarship: `src/pages/scholarship.astro`
+- Free Training: `src/pages/free-training.astro`
+- Financial Support: `src/pages/financial-support-by-apon.astro`
+- Campus Ambassador: `src/pages/acp.astro`
+- About: `src/pages/about.astro`
 - Contact form: `src/pages/contact.astro`
 - Newsletter: `src/pages/newsletter.astro`
 - Opportunities: `src/pages/opportunities.astro`
@@ -42,6 +55,8 @@ npm run preview
 - Brand styles: `src/styles/global.css`
 - Navigation styles: `src/styles/menu.css`
 - Logo: `public/apon-logo.svg`
+
+A no-index `/admin/` utility page links directly to the relevant GitHub editors for maintainers.
 
 The existing live URL typo `/downoad-app/` is deliberately preserved so external links and SEO are not broken. `/download-app/` redirects to it.
 
@@ -63,7 +78,7 @@ Contact and newsletter forms keep the public form fields and use an email-client
 
 ## QA
 
-`.github/workflows/ci.yml` installs dependencies, builds Astro and verifies important generated files on every push to `main`.
+`.github/workflows/ci.yml` installs dependencies on Node 22, audits production dependencies, builds Astro and verifies important generated routes/files on every push to `main`.
 
 ## Deployment
 
