@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+const base='https://github.com/shabbirhossaingd-prog/apon.uk/edit/main/';
+const editors=[
+  ['Homepage','src/pages/index.astro'],
+  ['Main content pages','src/pages/[slug].astro'],
+  ['Contact','src/pages/contact.astro'],
+  ['Newsletter','src/pages/newsletter.astro'],
+  ['Opportunities','src/pages/opportunities.astro'],
+  ['Blogs','src/pages/blogs.astro'],
+  ['Download App','src/pages/downoad-app.astro'],
+  ['Header / Footer / SEO','src/layouts/Layout.astro'],
+  ['Brand styles','src/styles/global.css']
+];
+---
+<Layout title="Content Editor | Apon UK" description="Apon UK repository content editor links." noindex={true}>
+  <PageHeader eyebrow="Site management" title="Content Editor" subtitle="Edit the website from the repository while keeping the static site fast." />
+  <section class="section white"><div class="container archive-grid">{editors.map(([title,path])=><article class="archive-card"><span class="archive-meta">Edit</span><h3>{title}</h3><p>{path}</p><a class="text-link" href={`${base}${path}`} target="_blank" rel="noopener">Open editor →</a></article>)}</div></section>
+</Layout>
