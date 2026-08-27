@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+const topics=['English and IELTS','WordPress and SEO','App Development','Freelancing Programme','PhD & Research Training','Cloud Computing','AWS AI/ML certification','Startup Entrepreneur Training','Accounting (ACCA/CA)','Digital Marketing & Social Media Management'];
+---
+<Layout title="Free training – Apon UK" description="Training with work experience. Free, personalized with real world example">
+  <PageHeader title="Free training" subtitle="Training with work experience" />
+  <section class="section white"><div class="container"><p style="color:var(--muted);font-size:1.08rem;margin-top:0">Free, personalized with real world example</p><div class="topic-grid">{topics.map((topic,index)=><div class="topic-item"><b>{index+1}</b><span>{topic}</span></div>)}</div></div></section>
+</Layout>
