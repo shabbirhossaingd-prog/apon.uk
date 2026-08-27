@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 const training = ['English and IELTS','WordPress and SEO','App Development','Freelancing Programme','PhD & Research Training','Cloud Computing','AWS AI/ML certification','Startup Entrepreneur Training','Accounting (ACCA/CA)','Digital Marketing & Social Media Management'];
 ---
 <Layout title="Apon UK: Global Platform with App and AI" description="Career, Asset Management, R&D Consultancy. Study, Freelancing, Job, Startup and Research degree globally.">
@@ -20,7 +21,7 @@ const training = ['English and IELTS','WordPress and SEO','App Development','Fre
       </div>
 
       <div class="career-board career-photo-board" aria-label="Students building global careers">
-        <img class="career-photo" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=86" alt="Students studying together" loading="eager" fetchpriority="high" />
+        <img class="career-photo" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fm=webp&fit=crop&w=1400&q=78" alt="Students studying together" loading="eager" fetchpriority="high" />
         <div class="career-photo-shade"></div>
         <div class="career-board-top">
           <span class="board-label">Set Goal, Learn & Earn</span>
@@ -37,7 +38,7 @@ const training = ['English and IELTS','WordPress and SEO','App Development','Fre
     </div>
   </section>
 
-  <section class="section section-intro white">
+  <section class="section section-intro white textured-section">
     <div class="container">
       <div class="section-head editorial-head">
         <div>
@@ -50,31 +51,31 @@ const training = ['English and IELTS','WordPress and SEO','App Development','Fre
       <div class="service-grid-v2">
         <a class="service-card-v2 service-card-featured" href="/opportunities/">
           <div class="service-number">01</div>
-          <div class="service-icon">↗</div>
+          <div class="service-icon icon-bubble"><Icon name="success" size={28} /></div>
           <h3>Work and earn success with Global experts</h3>
           <p>Work opportunities with learning support<br/>Freelancing, work experience,<br/>interns, global job with remote work</p>
           <span class="service-link">Read More <b>→</b></span>
         </a>
         <a class="service-card-v2" href="/success/">
-          <div class="service-number">02</div><div class="service-icon">◎</div><h3>Set Goal, Learn & Earn</h3><p>Goal: Job , Study abroad, start a research degree, startup or freelancing.</p><span class="service-link">Read More <b>→</b></span>
+          <div class="service-number">02</div><div class="service-icon icon-bubble"><Icon name="target" size={28} /></div><h3>Set Goal, Learn & Earn</h3><p>Goal: Job , Study abroad, start a research degree, startup or freelancing.</p><span class="service-link">Read More <b>→</b></span>
         </a>
         <a class="service-card-v2" href="/guidance/">
-          <div class="service-number">03</div><div class="service-icon">▤</div><h3>Guidance Ebook, join seminar</h3><p>Goal? Job , Study abroad, start a research degree, start up or freelancing.</p><span class="service-link">Read More <b>→</b></span>
+          <div class="service-number">03</div><div class="service-icon icon-bubble"><Icon name="guide" size={28} /></div><h3>Guidance Ebook, join seminar</h3><p>Goal? Job , Study abroad, start a research degree, start up or freelancing.</p><span class="service-link">Read More <b>→</b></span>
         </a>
         <a class="service-card-v2" href="/free-training/">
-          <div class="service-number">04</div><div class="service-icon">✦</div><h3>Free training</h3><p>Training with work experience<br/>Free, personalized with real world example</p><span class="service-link">Read More <b>→</b></span>
+          <div class="service-number">04</div><div class="service-icon icon-bubble"><Icon name="training" size={28} /></div><h3>Free training</h3><p>Training with work experience<br/>Free, personalized with real world example</p><span class="service-link">Read More <b>→</b></span>
         </a>
         <a class="service-card-v2" href="/opportunities/">
-          <div class="service-number">05</div><div class="service-icon">◫</div><h3>Work and earn success with Global experts</h3><p>Work opportunities with learning support<br/>Freelancing, work experience,<br/>interns, global job with remote work</p><span class="service-link">Read More <b>→</b></span>
+          <div class="service-number">05</div><div class="service-icon icon-bubble"><Icon name="seminar" size={28} /></div><h3>Work and earn success with Global experts</h3><p>Work opportunities with learning support<br/>Freelancing, work experience,<br/>interns, global job with remote work</p><span class="service-link">Read More <b>→</b></span>
         </a>
         <a class="service-card-v2 service-card-dark" href="/about/">
-          <div class="service-number">06</div><div class="service-icon">AI</div><h3>Web Portal, AI & App</h3><p>About Apon UK</p><span class="service-link">Click Here <b>→</b></span>
+          <div class="service-number">06</div><div class="service-icon icon-bubble"><Icon name="spark" size={28} /></div><h3>Web Portal, AI & App</h3><p>About Apon UK</p><span class="service-link">Click Here <b>→</b></span>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section about-band">
+  <section class="section about-band textured-dark">
     <div class="container about-band-grid">
       <div class="about-band-copy">
         <span class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span>About Apon UK</span>
@@ -84,37 +85,49 @@ const training = ['English and IELTS','WordPress and SEO','App Development','Fre
       </div>
 
       <div class="seminar-card seminar-card-photo">
-        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=84" alt="Students in a learning seminar" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fm=webp&fit=crop&w=1200&q=78" alt="Students in a learning seminar" loading="lazy" />
         <div class="seminar-photo-overlay"></div>
         <div class="seminar-content">
           <span class="section-kicker section-kicker-light">Guideline Seminar</span>
           <div class="seminar-list">
-            <div><span>01</span><p>Seminars on 3 areas: Overview, Global Study, Global Careers and Beyond</p></div>
-            <div><span>02</span><p>Know more about higher study, research, job, scholarship, living expense</p></div>
-            <div><span>03</span><p>For next seminar Register online</p></div>
+            <div><span class="seminar-icon"><Icon name="seminar" size={22} /></span><p>Seminars on 3 areas: Overview, Global Study, Global Careers and Beyond</p></div>
+            <div><span class="seminar-icon"><Icon name="study" size={22} /></span><p>Know more about higher study, research, job, scholarship, living expense</p></div>
+            <div><span class="seminar-icon"><Icon name="calendar" size={22} /></span><p>For next seminar Register online</p></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section white glance-section">
+  <section class="section white glance-section textured-section">
     <div class="container">
       <div class="section-head editorial-head"><div><span class="section-kicker">Apon UK at a Glance</span><h2>Apon UK at a Glance</h2></div></div>
       <div class="stat-strip-v2">
-        <div class="stat-v2"><span>Established</span><strong>2014</strong></div>
-        <div class="stat-v2"><span>Countries</span><strong>5+</strong></div>
-        <div class="stat-v2"><span>Location</span><strong>2+</strong></div>
-        <div class="stat-v2 stat-action"><a href="/contact/">Contact us <b>↗</b></a></div>
+        <div class="stat-v2">
+          <span class="stat-icon"><Icon name="calendar" size={24} /></span>
+          <span class="stat-label">Established</span>
+          <strong class="stat-number" data-count="2014">0</strong>
+        </div>
+        <div class="stat-v2">
+          <span class="stat-icon"><Icon name="globe" size={24} /></span>
+          <span class="stat-label">Countries</span>
+          <strong class="stat-number" data-count="5" data-suffix="+">0</strong>
+        </div>
+        <div class="stat-v2">
+          <span class="stat-icon"><Icon name="location" size={24} /></span>
+          <span class="stat-label">Location</span>
+          <strong class="stat-number" data-count="2" data-suffix="+">0</strong>
+        </div>
+        <div class="stat-v2 stat-action"><a href="/contact/"><span>Contact us</span><b>↗</b></a></div>
       </div>
       <div class="glance-action"><a class="btn btn-primary" href="https://wa.me/447459157276">Join our WhatsApp community</a></div>
     </div>
   </section>
 
-  <section class="section learning-section">
+  <section class="section learning-section textured-soft">
     <div class="container learning-grid">
       <div class="ebook-panel-v2 ebook-photo-panel">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=84" alt="Learning with a laptop and study materials" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fm=webp&fit=crop&w=1100&q=78" alt="Student learning with study materials" loading="lazy" />
         <div class="ebook-photo-shade"></div>
         <div class="ebook-content">
           <span class="section-kicker section-kicker-light">Career guidance Ebook</span>
@@ -139,11 +152,11 @@ const training = ['English and IELTS','WordPress and SEO','App Development','Fre
     </div>
   </section>
 
-  <section class="section white outcomes-section">
+  <section class="section white outcomes-section textured-section">
     <div class="container outcomes-grid">
-      <article class="outcome-card outcome-primary"><span class="outcome-icon">✓</span><h3>Global Career success</h3><p>1. After training work with us<br/>2. Global skills development with latest tech, management<br/>3. Freelancing, startup, research and job abroad</p><a href="/success/">Read More →</a></article>
-      <article class="outcome-card"><span class="outcome-icon">▶</span><h3>Join Webiner</h3><p>Job, higher education, research, skills, learn from others Success story.</p><a href="/guidance/">Join Webiner →</a></article>
-      <article class="outcome-card"><span class="outcome-icon">1:1</span><h3>Free Personal Consultation</h3><p><strong>Study, Job, Freelancing, Startup, Research globally</strong><br/>Which country, University, degree<br/><br/><strong>15-30 mins free and open discussion</strong><br/>What goal, action and challange<br/><br/><strong>With practical experience</strong><br/>in IT, university and others</p><a href="/contact/">Contact us →</a></article>
+      <article class="outcome-card outcome-primary"><span class="outcome-icon icon-bubble"><Icon name="success" size={26} /></span><h3>Global Career success</h3><p>1. After training work with us<br/>2. Global skills development with latest tech, management<br/>3. Freelancing, startup, research and job abroad</p><a href="/success/">Read More →</a></article>
+      <article class="outcome-card"><span class="outcome-icon icon-bubble"><Icon name="play" size={26} /></span><h3>Join Webiner</h3><p>Job, higher education, research, skills, learn from others Success story.</p><a href="/guidance/">Join Webiner →</a></article>
+      <article class="outcome-card"><span class="outcome-icon icon-bubble"><Icon name="chat" size={26} /></span><h3>Free Personal Consultation</h3><p><strong>Study, Job, Freelancing, Startup, Research globally</strong><br/>Which country, University, degree<br/><br/><strong>15-30 mins free and open discussion</strong><br/>What goal, action and challange<br/><br/><strong>With practical experience</strong><br/>in IT, university and others</p><a href="/contact/">Contact us →</a></article>
     </div>
   </section>
 
