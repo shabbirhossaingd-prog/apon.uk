@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<Layout title="Work with us | Apon UK" description="Work with Apon UK. University, Private company or individuals. IT, Digital skills, accounting, content writing and global experience.">
+  <PageHeader title="Work with us" subtitle="University, Private company or individuals." actions={[{label:'Apon Portal',href:'https://portal.apon.uk/',primary:true}]} />
+  <section class="section white">
+    <div class="container info-grid">
+      <article class="info-panel"><span class="eyebrow"><span class="eyebrow-dot"></span>Global Experience</span><h2 style="margin-top:18px">IT, Digital skills, accounting, content writing……</h2><p>Start Learning and earning.</p></article>
+      <article class="info-panel"><span class="eyebrow"><span class="eyebrow-dot"></span>Career</span><h2 style="margin-top:18px">Part time or Full time work.</h2><p>Start your global career journey …</p><div class="hero-actions"><a class="btn btn-primary" href="/opportunities/">Click here for details</a></div></article>
+    </div>
+  </section>
+</Layout>
