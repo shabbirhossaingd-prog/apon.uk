@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+const items=[
+  {title:'PhD: guidance and training',category:'Opportunities',href:'/researchdegree/'},
+  {title:'Free training, work for freelancer',category:'Opportunities',href:'/freelancing/'},
+  {title:'Freelance Immigration, Travel, and Study Visa Consultant',category:'Opportunities',href:'/opportunities/'},
+  {title:'Freelance Software Testing and Quality ...',category:'Opportunities',href:'/opportunities/'}
+];
+---
+<Layout title="Blogs | Apon UK" description="Apon UK blogs and opportunities." schemaType="CollectionPage">
+  <PageHeader eyebrow="Apon UK" title="Blogs" subtitle="" />
+  <section class="section white">
+    <div class="container archive-grid">
+      {items.map((item)=><article class="archive-card"><span class="archive-meta">{item.category}</span><h3>{item.title}</h3><a class="text-link" href={item.href}>Read More →</a></article>)}
+    </div>
+  </section>
+</Layout>
