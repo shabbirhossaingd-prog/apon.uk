@@ -94,16 +94,32 @@ const organisation = {
       document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&m&&!m.hidden){m.hidden=true;b.textContent='☰';b.setAttribute('aria-expanded','false');}});
 
       if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-        const motionTargets=document.querySelectorAll('#main-content .section-head,#main-content .card,#main-content .feature-panel,#main-content .stat,#main-content .training-item,#main-content .content-card,#main-content .info-panel,#main-content .archive-card,#main-content .form-card,#main-content .app-panel,#main-content .cta');
+        const motionTargets=document.querySelectorAll('#main-content .section-head,#main-content .card,#main-content .feature-panel,#main-content .stat,#main-content .training-item,#main-content .content-card,#main-content .info-panel,#main-content .archive-card,#main-content .form-card,#main-content .app-panel,#main-content .cta,#main-content .split>div,#main-content .image-panel');
         const globalObserver=new IntersectionObserver((entries)=>{
           entries.forEach((entry)=>{
-            if(entry.isIntersecting){entry.target.classList.add('global-visible');globalObserver.unobserve(entry.target);}
+            if(entry.isIntersecting){
+              entry.target.classList.add('global-visible');
+              globalObserver.unobserve(entry.target);
+            }
           });
-        },{threshold:.1,rootMargin:'0px 0px -28px'});
+        },{threshold:.14,rootMargin:'0px 0px -55px'});
+
         motionTargets.forEach((el,index)=>{
           if(el.classList.contains('reveal-item')) return;
           el.classList.add('global-reveal');
-          el.style.setProperty('--global-delay',`${Math.min(index%5,4)*60}ms`);
+
+          let direction=index%2===0?'motion-left':'motion-right';
+          if(el.classList.contains('section-head')) direction='motion-left';
+          if(el.classList.contains('cta')) direction='motion-up';
+          if(el.classList.contains('image-panel')||el.classList.contains('feature-panel')) direction='motion-right';
+          const split=el.closest('.split');
+          if(split){
+            const children=[...split.children];
+            direction=children.indexOf(el)===0?'motion-left':'motion-right';
+          }
+
+          el.classList.add(direction);
+          el.style.setProperty('--motion-delay',`${Math.min(index%4,3)*65}ms`);
           globalObserver.observe(el);
         });
       }
