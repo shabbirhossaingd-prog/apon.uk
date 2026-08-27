@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+const services=['Global career platform, support and consultancy','R&D, Consultancy','Outsourcing','Asset Management platform, support and consultancy'];
+---
+<Layout title="Sectors | Apon UK" description="Apon UK sectors and services.">
+  <PageHeader title="Sectors" subtitle="" />
+  <section class="section white"><div class="container content-grid">{services.map((service,index)=><article class="content-card"><span class="card-number">{index+1}</span><h3>{service}</h3></article>)}</div></section>
+</Layout>
