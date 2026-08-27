@@ -1,7 +1,29 @@
 ---
 import '../styles/global.css';
 import '../styles/menu.css';
-const { title = 'Apon UK', description = 'Global career platform with consultancy, R&D and technology services.' } = Astro.props;
+
+const {
+  title = 'Apon UK: Global Platform with App and AI',
+  description = 'Career, Asset Management, R&D Consultancy. Study, Freelancing, Job, Startup and Research degree globally.',
+  image = '/og-cover.svg',
+  noindex = false,
+  schemaType = 'Organization'
+} = Astro.props;
+
+const siteOrigin = Astro.site ?? new URL('https://apon.uk');
+const canonical = new URL(Astro.url.pathname, siteOrigin).toString();
+const ogImage = new URL(image, siteOrigin).toString();
+const organisation = {
+  '@context':'https://schema.org',
+  '@type': schemaType,
+  name:'Apon UK',
+  url:'https://apon.uk',
+  logo:'https://apon.uk/apon-logo.svg',
+  email:'info@apon.uk',
+  telephone:'+44 7459 157276',
+  address:{'@type':'PostalAddress',streetAddress:'10 Pinelea',addressLocality:'Altrincham',addressCountry:'GB'},
+  sameAs:['https://uk.linkedin.com/company/apondotuk']
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -10,41 +32,64 @@ const { title = 'Apon UK', description = 'Global career platform with consultanc
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#1557b7" />
-    <link rel="canonical" href={Astro.url.href} />
+    <meta name="color-scheme" content="light" />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Apon UK" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(organisation)}></script>
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="/" aria-label="Apon UK home"><span class="brand-mark">A</span><span>Apon UK</span></a>
+        <a class="brand brand-logo" href="/" aria-label="Apon UK home"><img src="/apon-logo.svg" width="176" height="47" alt="Apon UK" /></a>
         <nav class="nav-links" aria-label="Primary navigation">
-          <div class="nav-group"><a href="/studyabroad/">Goal</a><div class="dropdown"><a href="/studyabroad/">Study Abroad</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div></div>
+          <div class="nav-group"><a href="/studyabroad/">Goal</a><div class="dropdown"><a href="/studyabroad/">Study Abroad</a><a href="/guidance/">How to Start</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div></div>
           <div class="nav-group"><a href="/guidance/">Learn</a><div class="dropdown"><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a></div></div>
           <div class="nav-group"><a href="/opportunities/">Earn</a><div class="dropdown"><a href="/opportunities/">Opportunities</a><a href="/scholarship/">Scholarship</a><a href="/freelancing/">Freelancing</a></div></div>
-          <div class="nav-group"><a href="/about/">Services</a><div class="dropdown"><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/payments/">Payment</a></div></div>
+          <div class="nav-group"><a href="/about/">Services</a><div class="dropdown dropdown-wide"><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/blogs/">Blogs</a><a href="/help/">Help in Need</a><a href="/work-with-us/">Work with us</a><a href="https://portal.apon.uk/">Account Login</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/sectors/">Sectors</a><a href="/government-solution/">Governement Solution</a><a href="/payments/">Payment</a></div></div>
         </nav>
         <div class="nav-actions"><a class="btn btn-ghost" href="/guidance/">Join Seminar</a><a class="btn btn-primary" href="https://portal.apon.uk/">Apon Portal</a></div>
-        <button class="menu-toggle" aria-label="Open menu" data-menu-toggle>☰</button>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>☰</button>
       </div>
       <div class="mobile-menu" data-mobile-menu hidden>
-        <div class="container" style="padding:12px 0 20px">
-          <div class="mobile-section"><strong>Goal</strong><a href="/studyabroad/">Study Abroad</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div>
+        <div class="container mobile-menu-grid">
+          <div class="mobile-section"><strong>Goal</strong><a href="/studyabroad/">Study Abroad</a><a href="/guidance/">How to Start</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div>
           <div class="mobile-section"><strong>Learn</strong><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a></div>
           <div class="mobile-section"><strong>Earn</strong><a href="/opportunities/">Opportunities</a><a href="/scholarship/">Scholarship</a><a href="/freelancing/">Freelancing</a></div>
-          <div class="mobile-section"><strong>Services</strong><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/payments/">Payment</a></div>
+          <div class="mobile-section"><strong>Services</strong><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/blogs/">Blogs</a><a href="/help/">Help in Need</a><a href="/work-with-us/">Work with us</a><a href="https://portal.apon.uk/">Account Login</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/sectors/">Sectors</a><a href="/government-solution/">Governement Solution</a><a href="/payments/">Payment</a></div>
+          <div class="mobile-cta"><a class="btn btn-light" href="/guidance/">Join Seminar</a><a class="btn btn-primary" href="https://portal.apon.uk/">Apon Portal</a></div>
         </div>
       </div>
     </header>
-    <main><slot /></main>
+    <main id="main-content"><slot /></main>
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-brand"><a class="brand" href="/"><span class="brand-mark">A</span><span>Apon UK</span></a><p>A global career & technology service provider</p></div>
+      <div class="container footer-grid footer-grid-complete">
+        <div class="footer-brand"><a class="brand brand-logo footer-logo" href="/"><img src="/apon-logo.svg" width="176" height="47" alt="Apon UK" /></a><p>A global career & technology service provider</p><p class="footer-contact">10 Pinelea, Altrincham United Kingdom<br/><a href="tel:+447459157276">+44 7459 157276</a><br/><a href="mailto:info@apon.uk">info@apon.uk</a></p></div>
         <div class="footer-col"><h4>Goal</h4><a href="/studyabroad/">Study Abroad</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div>
-        <div class="footer-col"><h4>Learn & Earn</h4><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a><a href="/opportunities/">Opportunities</a><a href="/scholarship/">Scholarship</a></div>
-        <div class="footer-col"><h4>Services</h4><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/acp/">Campus Ambassador</a><a href="/payments/">Payment</a></div>
+        <div class="footer-col"><h4>Learn & Earn</h4><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a><a href="/opportunities/">Opportunities</a><a href="/category/opportunities/">Opportunity Posts</a><a href="/scholarship/">Scholarship</a></div>
+        <div class="footer-col"><h4>Services</h4><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/blogs/">Blogs</a><a href="/help/">Help in Need</a><a href="/work-with-us/">Work with us</a></div>
+        <div class="footer-col"><h4>More</h4><a href="https://portal.apon.uk/">Account Login</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/government-solution/">Governement Solution</a><a href="/payments/">Payment</a></div>
       </div>
-      <div class="container footer-bottom"><span>© Apon UK. All rights reserved.</span><span>info@apon.uk · +44 7459 157276</span></div>
+      <div class="container footer-bottom"><span>Copyright © 2026 Apon UK: Global Platform with App and AI</span><span><a href="https://uk.linkedin.com/company/apondotuk" rel="noopener">LinkedIn</a> · <a href="mailto:info@apon.uk">Email</a></span></div>
     </footer>
-    <script is:inline>const b=document.querySelector('[data-menu-toggle]');const m=document.querySelector('[data-mobile-menu]');b?.addEventListener('click',()=>{m.hidden=!m.hidden;b.textContent=m.hidden?'☰':'✕'});</script>
+    <script is:inline>
+      const b=document.querySelector('[data-menu-toggle]');
+      const m=document.querySelector('[data-mobile-menu]');
+      b?.addEventListener('click',()=>{const isHidden=m.hidden;m.hidden=!isHidden;b.textContent=isHidden?'✕':'☰';b.setAttribute('aria-expanded',String(isHidden));});
+      document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&m&&!m.hidden){m.hidden=true;b.textContent='☰';b.setAttribute('aria-expanded','false');}});
+    </script>
   </body>
 </html>
