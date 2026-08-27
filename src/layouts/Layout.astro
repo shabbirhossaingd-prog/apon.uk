@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import '../styles/menu.css';
 import '../styles/premium.css';
+import '../styles/motion.css';
 
 const {
   title = 'Apon UK: Global Platform with App and AI',
@@ -91,6 +92,21 @@ const organisation = {
       const m=document.querySelector('[data-mobile-menu]');
       b?.addEventListener('click',()=>{const isHidden=m.hidden;m.hidden=!isHidden;b.textContent=isHidden?'✕':'☰';b.setAttribute('aria-expanded',String(isHidden));});
       document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&m&&!m.hidden){m.hidden=true;b.textContent='☰';b.setAttribute('aria-expanded','false');}});
+
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        const motionTargets=document.querySelectorAll('#main-content .section-head,#main-content .card,#main-content .feature-panel,#main-content .stat,#main-content .training-item,#main-content .content-card,#main-content .info-panel,#main-content .archive-card,#main-content .form-card,#main-content .app-panel,#main-content .cta');
+        const globalObserver=new IntersectionObserver((entries)=>{
+          entries.forEach((entry)=>{
+            if(entry.isIntersecting){entry.target.classList.add('global-visible');globalObserver.unobserve(entry.target);}
+          });
+        },{threshold:.1,rootMargin:'0px 0px -28px'});
+        motionTargets.forEach((el,index)=>{
+          if(el.classList.contains('reveal-item')) return;
+          el.classList.add('global-reveal');
+          el.style.setProperty('--global-delay',`${Math.min(index%5,4)*60}ms`);
+          globalObserver.observe(el);
+        });
+      }
     </script>
   </body>
 </html>
