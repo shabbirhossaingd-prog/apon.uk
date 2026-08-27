@@ -28,7 +28,7 @@ else if (key.includes('about') || key.includes('pioneer') || key.includes('ambas
 else if (key.includes('contact') || key.includes('help')) heroImage = images.contact;
 else if (key.includes('app') || key.includes('sector') || key.includes('government') || key.includes('opportunit')) heroImage = images.tech;
 ---
-<section class="content-hero subpage-hero">
+<section class="content-hero subpage-hero edu-shared-hero">
   <div class="container subpage-hero-grid">
     <div class="subpage-hero-copy">
       <span class="eyebrow"><span class="eyebrow-dot"></span>{eyebrow}</span>
@@ -37,14 +37,31 @@ else if (key.includes('app') || key.includes('sector') || key.includes('governme
       {actions?.length > 0 && <div class="hero-actions">{actions.map((action) => <a class={`btn ${action.primary ? 'btn-primary' : 'btn-secondary'}`} href={action.href}>{action.label}</a>)}</div>}
     </div>
     <div class="subpage-hero-media" aria-hidden="true">
+      <span class="edu-hero-shape edu-hero-shape-a"></span>
+      <span class="edu-hero-shape edu-hero-shape-b"></span>
       <img src={heroImage} alt="" width="900" height="720" loading="eager" fetchpriority="high" decoding="async" />
-      <span class="media-wash"></span>
-      <span class="media-ring media-ring-one"></span>
-      <span class="media-ring media-ring-two"></span>
-      <span class="media-brand">A</span>
     </div>
   </div>
 </section>
+
+<style is:global>
+.edu-shared-hero{padding:126px 0 72px!important;background:linear-gradient(120deg,#f4f8fd 0%,#eef5fc 58%,#fff4ed 100%)!important;color:#10233f!important;overflow:hidden!important}
+.edu-shared-hero .subpage-hero-grid{grid-template-columns:minmax(0,.9fr) minmax(380px,.72fr)!important;gap:70px!important;min-height:430px!important;align-items:center!important}
+.edu-shared-hero .subpage-hero-copy{max-width:760px!important}
+.edu-shared-hero .eyebrow{background:#fff!important;color:#1557b7!important;border:1px solid rgba(21,87,183,.1)!important;box-shadow:0 7px 24px rgba(8,43,97,.05)!important}
+.edu-shared-hero .eyebrow-dot{background:#ff823d!important}
+.edu-shared-hero h1{color:#082b61!important;font-size:clamp(3.9rem,6.7vw,7.4rem)!important;line-height:.87!important;letter-spacing:-.072em!important;margin:22px 0 22px!important}
+.edu-shared-hero p{color:#66758a!important;font-size:1.05rem!important;max-width:610px!important;line-height:1.7!important}
+.edu-shared-hero .hero-actions{margin-top:30px!important}
+.edu-shared-hero .subpage-hero-media{position:relative!important;height:390px!important;border:0!important;border-radius:30px!important;box-shadow:none!important;overflow:visible!important;transform:none!important;background:transparent!important;isolation:isolate!important}
+.edu-shared-hero .subpage-hero-media:before,.edu-shared-hero .subpage-hero-media:after{display:none!important}
+.edu-shared-hero .subpage-hero-media img{position:absolute!important;inset:20px 0 0 22px!important;width:calc(100% - 22px)!important;height:calc(100% - 20px)!important;object-fit:cover!important;border-radius:28px!important;box-shadow:0 24px 60px rgba(8,43,97,.13)!important;animation:none!important;z-index:2!important}
+.edu-shared-hero .edu-hero-shape{position:absolute;display:block;pointer-events:none;z-index:1}
+.edu-shared-hero .edu-hero-shape-a{width:120px;height:120px;border-radius:32px;background:#1557b7;right:-22px;top:-20px;transform:rotate(13deg)}
+.edu-shared-hero .edu-hero-shape-b{width:92px;height:92px;border-radius:50%;background:#ff823d;left:-18px;bottom:-12px;opacity:.92}
+@media(max-width:980px){.edu-shared-hero{padding:112px 0 62px!important}.edu-shared-hero .subpage-hero-grid{grid-template-columns:1fr!important;gap:36px!important;min-height:auto!important}.edu-shared-hero .subpage-hero-media{height:340px!important;max-width:680px!important}.edu-shared-hero h1{font-size:clamp(3.6rem,10vw,6rem)!important}}
+@media(max-width:640px){.edu-shared-hero{padding:104px 0 48px!important}.edu-shared-hero h1{font-size:clamp(3.15rem,16vw,4.9rem)!important}.edu-shared-hero .subpage-hero-media{height:270px!important}.edu-shared-hero .subpage-hero-media img{inset:12px 0 0 12px!important;width:calc(100% - 12px)!important;height:calc(100% - 12px)!important;border-radius:22px!important}.edu-shared-hero .edu-hero-shape-a{width:84px;height:84px;right:-10px}.edu-shared-hero .edu-hero-shape-b{width:68px;height:68px;left:-8px}}
+</style>
 
 <script is:inline>
   (() => {
