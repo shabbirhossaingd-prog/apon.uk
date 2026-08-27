@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 170" role="img" aria-labelledby="title desc">
+  <title id="title">Apon UK</title>
+  <desc id="desc">White transparent Apon UK logo for dark navigation</desc>
+  <g fill="#fff">
+    <text x="4" y="132" font-family="Arial Black,Arial,Helvetica,sans-serif" font-size="148" font-weight="900" letter-spacing="-10">Apon</text>
+    <text x="418" y="132" font-family="Arial Black,Arial,Helvetica,sans-serif" font-size="66" font-weight="900" letter-spacing="-3">UK</text>
+  </g>
+  <g transform="translate(378 38)" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 57 28 37c8-8 18-9 26-2l17 15c7 6 7 17 0 24L58 87"/>
+    <path d="M88 57 69 38c-8-8-18-9-26-2L27 51c-7 6-7 17 0 24l12 12"/>
+    <path d="m37 48 9 9m-18 0 11 11m-19-1 12 12m5 8 8 8"/>
+  </g>
+</svg>
