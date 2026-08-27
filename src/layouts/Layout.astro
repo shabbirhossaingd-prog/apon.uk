@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
+import '../styles/menu.css';
 const { title = 'Apon UK', description = 'Global career platform with consultancy, R&D and technology services.' } = Astro.props;
-const pathname = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="en">
@@ -18,39 +18,33 @@ const pathname = Astro.url.pathname;
       <div class="container nav">
         <a class="brand" href="/" aria-label="Apon UK home"><span class="brand-mark">A</span><span>Apon UK</span></a>
         <nav class="nav-links" aria-label="Primary navigation">
-          <a href="/studyabroad/">Goal</a>
-          <a href="/guidance/">Learn</a>
-          <a href="/opportunities/">Earn</a>
-          <a href="/about/">Services</a>
-          <a href="/about/">About</a>
+          <div class="nav-group"><a href="/studyabroad/">Goal</a><div class="dropdown"><a href="/studyabroad/">Study Abroad</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div></div>
+          <div class="nav-group"><a href="/guidance/">Learn</a><div class="dropdown"><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a></div></div>
+          <div class="nav-group"><a href="/opportunities/">Earn</a><div class="dropdown"><a href="/opportunities/">Opportunities</a><a href="/scholarship/">Scholarship</a><a href="/freelancing/">Freelancing</a></div></div>
+          <div class="nav-group"><a href="/about/">Services</a><div class="dropdown"><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/payments/">Payment</a></div></div>
         </nav>
-        <div class="nav-actions">
-          <a class="btn btn-ghost" href="/guidance/">Join Seminar</a>
-          <a class="btn btn-primary" href="https://portal.apon.uk/">Apon Portal</a>
-        </div>
+        <div class="nav-actions"><a class="btn btn-ghost" href="/guidance/">Join Seminar</a><a class="btn btn-primary" href="https://portal.apon.uk/">Apon Portal</a></div>
         <button class="menu-toggle" aria-label="Open menu" data-menu-toggle>☰</button>
       </div>
       <div class="mobile-menu" data-mobile-menu hidden>
-        <div class="container" style="padding:12px 0 20px;display:grid;gap:10px;color:white">
-          <a href="/studyabroad/">Goal</a><a href="/guidance/">Learn</a><a href="/opportunities/">Earn</a><a href="/about/">Services</a><a href="/contact/">Contact</a>
+        <div class="container" style="padding:12px 0 20px">
+          <div class="mobile-section"><strong>Goal</strong><a href="/studyabroad/">Study Abroad</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div>
+          <div class="mobile-section"><strong>Learn</strong><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a></div>
+          <div class="mobile-section"><strong>Earn</strong><a href="/opportunities/">Opportunities</a><a href="/scholarship/">Scholarship</a><a href="/freelancing/">Freelancing</a></div>
+          <div class="mobile-section"><strong>Services</strong><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/downoad-app/">Download App</a><a href="/acp/">Campus Ambassador</a><a href="/payments/">Payment</a></div>
         </div>
       </div>
     </header>
     <main><slot /></main>
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="footer-brand">
-          <a class="brand" href="/"><span class="brand-mark">A</span><span>Apon UK</span></a>
-          <p>A global career & technology service provider. Global career platform, support and consultancy, R&D, outsourcing and asset management support.</p>
-        </div>
+        <div class="footer-brand"><a class="brand" href="/"><span class="brand-mark">A</span><span>Apon UK</span></a><p>A global career & technology service provider</p></div>
         <div class="footer-col"><h4>Goal</h4><a href="/studyabroad/">Study Abroad</a><a href="/freelancing/">Freelancing</a><a href="/startup/">Startup</a><a href="/researchdegree/">Research Degree</a><a href="/jobabroad/">Job Abroad</a></div>
         <div class="footer-col"><h4>Learn & Earn</h4><a href="/guidance/">Guide</a><a href="/free-training/">Free Training</a><a href="/opportunities/">Opportunities</a><a href="/scholarship/">Scholarship</a></div>
         <div class="footer-col"><h4>Services</h4><a href="/about/">About Us</a><a href="/contact/">Contact</a><a href="/newsletter/">Newsletter</a><a href="/financial-support-by-apon/">Financial Support</a><a href="/acp/">Campus Ambassador</a><a href="/payments/">Payment</a></div>
       </div>
       <div class="container footer-bottom"><span>© Apon UK. All rights reserved.</span><span>info@apon.uk · +44 7459 157276</span></div>
     </footer>
-    <script is:inline>
-      const b=document.querySelector('[data-menu-toggle]');const m=document.querySelector('[data-mobile-menu]');b?.addEventListener('click',()=>{m.hidden=!m.hidden;b.textContent=m.hidden?'☰':'✕'});
-    </script>
+    <script is:inline>const b=document.querySelector('[data-menu-toggle]');const m=document.querySelector('[data-mobile-menu]');b?.addEventListener('click',()=>{m.hidden=!m.hidden;b.textContent=m.hidden?'☰':'✕'});</script>
   </body>
 </html>
